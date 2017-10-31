@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+  div(ng-controller="indexController")
+    md-toolbar(class="md-hue-2")
+        div(class="md-toolbar-tools")
+          md-button(class="md-icon-button", aria-label="Settings", ng-disabled="false")
+            md-icon(md-svg-icon="node_modules/mid/img/icons/menu.svg")
+
+
+
+          h2 Login
+          md-button(class="md-icon-button" aria-label="More")
+            md-icon(md-svg-icon="node_modules/mid/img/icons/more_vert.svg")
+
+    br
+    br
+    div( layout="column", layout-padding,layout-align="center center")
+      md-content(class="md-no-momentum")
+        md-input-container(class="md-icon-float md-block")
+          label User Name
+            md-icon|(md-svg-src="img/icons/ic_person_24px.svg", class="name")
+          input(ng-model="user.name", type="text")
+      md-button(class="md-primary", ng-click="saludar()") Enter
