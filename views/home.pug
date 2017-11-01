@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  div(ng-controller="homeController")
+    md-toolbar(class="md-hue-2")
+        div(class="md-toolbar-tools")
+          md-button(class="md-icon-button", aria-label="Settings", ng-disabled="false")
+            md-icon(md-svg-icon="node_modules/mid/img/icons/menu.svg")
+
+
+
+          h2 Home
+          md-button(class="md-icon-button" aria-label="More")
+            md-icon(md-svg-icon="node_modules/mid/img/icons/more_vert.svg")
+
+    br
+    br
+    
+    div( layout="row")
+        div(flex="25")
+          md-button(class="md-icon-button" aria-label="More")
+
+        div(flex="50")
+          md-button(class="md-icon-button" aria-label="More")
+
+        div(flex="25")
+          md-button(class="md-icon-button" aria-label="More")

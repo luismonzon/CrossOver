@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var user = require('./routes/user');
+var home = require('./routes/home');
+var db = require('./db.js');
 
 var app = express();
 
@@ -24,7 +25,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/', index);
-app.use('/user', user);
+app.use('/home', home);
+
+db.connect(function(err){
+  if (err) {
+      console.log('Unable to connect to MySQL.')
+      process.exit(1)
+    }
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -32,6 +40,13 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+
+
+app.post('/', function (req, res) {
+  res.send('Got a POST request');
+});
+
 
 // error handler
 app.use(function(err, req, res, next) {

@@ -17,15 +17,29 @@ app.config(function($mdThemingProvider){
 })
 
 app.controller('indexController',indexController)
+app.controller('homeController',homeController)
 
-function indexController ($scope){
+
+function indexController ($scope,$http){
 
   $scope.user={}
 
-  $scope.saludar=function(){
-    console.log($scope.user.name)
-  }
+  $scope.iniciarSesion=function(){
+
+    $http.post('/login', $scope.user)
+               .success(function (data, status, headers, config) {
+                   if(!data.error){
+                      
+                   }else{
+
+                   }
+               })
+               .error(function (data, status, header, config) {
+                  console.log(data);
+               });  }
 
   console.log("hola");
 
 }
+
+function homeController($scope){}
